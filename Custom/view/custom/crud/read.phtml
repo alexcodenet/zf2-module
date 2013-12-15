@@ -1,0 +1,34 @@
+<?php
+
+$title = 'Operation <READ> output:';
+$this->headTitle($title);
+
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>
+    <a href="<?php echo $this->url('crud', array('action'=>'create'));?>">Create new row</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Id</th>
+    <th>Code name</th>
+    <th>Version</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($releases as $release) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($release->id);?></td>
+    <td><?php echo $this->escapeHtml($release->code_name);?></td>
+    <td><?php echo $this->escapeHtml($release->version);?></td>
+    <td>
+        <a href="<?php echo $this->url('crud',
+            array('action'=>'edit', 'id' => $release->id));?>">Edit</a>
+        <a href="<?php echo $this->url('crud',
+            array('action'=>'delete', 'id' => $release->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
